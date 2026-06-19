@@ -1,3 +1,7 @@
-# project-innovate-2024
+# НовоДом - Сайт агентства недвижимости
 
-Initial repository setup for pr-poehali-dev/project-innovate-2024
+![Preview](https://cdn.poehali.dev/templates/real-estate-ru/preview-ru.jpg)
+
+Современный шаблон для агентств недвижимости и риелторов. Включает главную страницу с формой быстрого поиска, каталог объектов с расширенными фильтрами, детальные карточки недвижимости и форму добавления объявлений. Поддержка светлой и темной темы.
+
+`"tags": ["saas", "light", "general", "pricing", "filters"]`
