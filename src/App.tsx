@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { MainNav } from "@/components/main-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import { User, Plus } from "lucide-react";
+import { ShoppingCart, Plus } from "lucide-react";
 import Index from "./pages/Index";
 import Properties from "./pages/Properties";
 import PropertyDetail from "./pages/PropertyDetail";
@@ -22,7 +22,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-8">
           <Link to="/" className="font-bold text-xl">
-            НовоДом
+            КиберМаркет
           </Link>
           <MainNav />
         </div>
@@ -31,11 +31,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
           <Link to="/properties/new">
             <Button size="sm" className="hidden gap-1 md:flex">
               <Plus className="h-4 w-4" />
-              Разместить
+              Добавить товар
             </Button>
           </Link>
-          <Button variant="ghost" size="icon" aria-label="User account">
-            <User className="h-5 w-5" />
+          <Button variant="ghost" size="icon" aria-label="Корзина">
+            <ShoppingCart className="h-5 w-5" />
           </Button>
         </div>
       </div>
@@ -44,7 +44,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => (
     <footer className="border-t py-6 md:py-0">
       <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
         <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-          2024 НовоДом. Все права защищены.
+          2024 КиберМаркет. Все права защищены.
         </p>
         <div className="flex items-center gap-4 text-sm text-muted-foreground">
           <Link to="/terms" className="hover:underline">

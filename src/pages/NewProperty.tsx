@@ -39,7 +39,7 @@ export default function NewPropertyPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert("Объявление успешно создано!")
+    alert("Товар успешно добавлен!")
   }
 
   return (
@@ -51,56 +51,56 @@ export default function NewPropertyPage() {
         </Link>
         <ChevronRight className="h-4 w-4" />
         <Link to="/properties" className="hover:text-foreground">
-          Объекты
+          Каталог
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground">Новое объявление</span>
+        <span className="text-foreground">Новый товар</span>
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">Разместить объявление</h1>
-        <p className="text-muted-foreground">Заполните форму ниже, чтобы добавить ваш объект</p>
+        <h1 className="text-3xl font-bold">Добавить товар</h1>
+        <p className="text-muted-foreground">Заполните форму ниже, чтобы добавить компьютер в каталог</p>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="grid gap-8 md:grid-cols-[2fr_1fr]">
           <Card>
             <CardHeader>
-              <CardTitle>Информация об объекте</CardTitle>
-              <CardDescription>Основные характеристики недвижимости</CardDescription>
+              <CardTitle>Информация о товаре</CardTitle>
+              <CardDescription>Основные характеристики компьютера</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="title">Название объявления</Label>
-                <Input id="title" placeholder="например, Современная квартира в центре" required />
+                <Label htmlFor="title">Название товара</Label>
+                <Input id="title" placeholder="например, Игровой ПК Cyber Storm RTX 4070" required />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="type">Тип недвижимости</Label>
+                  <Label htmlFor="type">Тип устройства</Label>
                   <Select required>
                     <SelectTrigger id="type">
                       <SelectValue placeholder="Выберите тип" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="house">Дом</SelectItem>
-                      <SelectItem value="apartment">Квартира</SelectItem>
-                      <SelectItem value="condo">Апартаменты</SelectItem>
-                      <SelectItem value="townhouse">Таунхаус</SelectItem>
-                      <SelectItem value="land">Участок</SelectItem>
+                      <SelectItem value="gaming">Игровой ПК</SelectItem>
+                      <SelectItem value="office">Офисный ПК</SelectItem>
+                      <SelectItem value="laptop">Ноутбук</SelectItem>
+                      <SelectItem value="workstation">Рабочая станция</SelectItem>
+                      <SelectItem value="monoblock">Моноблок</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="status">Статус</Label>
+                  <Label htmlFor="status">Наличие</Label>
                   <Select required>
                     <SelectTrigger id="status">
                       <SelectValue placeholder="Выберите статус" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="available">Доступно</SelectItem>
-                      <SelectItem value="pending">Бронь</SelectItem>
-                      <SelectItem value="sold">Продано</SelectItem>
+                      <SelectItem value="available">В наличии</SelectItem>
+                      <SelectItem value="pending">Под заказ</SelectItem>
+                      <SelectItem value="sold">Нет в наличии</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -108,34 +108,39 @@ export default function NewPropertyPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="price">Цена (руб.)</Label>
-                <Input id="price" type="number" min="0" step="100000" required />
+                <Input id="price" type="number" min="0" step="1000" required />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="cpu">Процессор</Label>
+                <Input id="cpu" placeholder="например, Intel Core i7-13700F" required />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="bedrooms">Комнат</Label>
+                  <Label htmlFor="bedrooms">Оперативная память (ГБ)</Label>
                   <Input id="bedrooms" type="number" min="0" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bathrooms">Санузлов</Label>
+                  <Label htmlFor="bathrooms">Накопитель SSD (ГБ)</Label>
                   <Input id="bathrooms" type="number" min="0" step="1" required />
                 </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="squareFeet">Площадь (м2)</Label>
-                  <Input id="squareFeet" type="number" min="0" required />
+                  <Label htmlFor="squareFeet">Видеокарта</Label>
+                  <Input id="squareFeet" placeholder="например, RTX 4070" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="yearBuilt">Год постройки</Label>
-                  <Input id="yearBuilt" type="number" min="1900" max={new Date().getFullYear()} required />
+                  <Label htmlFor="yearBuilt">Год выпуска</Label>
+                  <Input id="yearBuilt" type="number" min="2015" max={new Date().getFullYear()} required />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="description">Описание</Label>
-                <Textarea id="description" placeholder="Опишите ваш объект..." className="min-h-[150px]" required />
+                <Textarea id="description" placeholder="Опишите комплектацию и возможности компьютера..." className="min-h-[150px]" required />
               </div>
             </CardContent>
           </Card>
@@ -143,32 +148,26 @@ export default function NewPropertyPage() {
           <div className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Расположение</CardTitle>
-                <CardDescription>Где находится ваш объект?</CardDescription>
+                <CardTitle>Доставка и гарантия</CardTitle>
+                <CardDescription>Условия продажи товара</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="street">Адрес</Label>
-                  <Input id="street" required />
+                  <Label htmlFor="warranty">Гарантия (месяцев)</Label>
+                  <Input id="warranty" type="number" min="0" defaultValue="24" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="os">Операционная система</Label>
+                  <Input id="os" placeholder="например, Windows 11" />
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="city">Город</Label>
-                    <Input id="city" required />
+                    <Label htmlFor="delivery">Срок доставки (дней)</Label>
+                    <Input id="delivery" type="number" min="0" defaultValue="3" required />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="state">Район/Область</Label>
-                    <Input id="state" required />
-                  </div>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="zip">Индекс</Label>
-                    <Input id="zip" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="country">Страна</Label>
-                    <Input id="country" defaultValue="Россия" required />
+                    <Label htmlFor="stock">Остаток (шт.)</Label>
+                    <Input id="stock" type="number" min="0" required />
                   </div>
                 </div>
               </CardContent>
@@ -201,7 +200,7 @@ export default function NewPropertyPage() {
           <Card>
             <CardHeader>
               <CardTitle>Фотографии</CardTitle>
-              <CardDescription>Загрузите фото объекта (до 10 штук)</CardDescription>
+              <CardDescription>Загрузите фото товара (до 10 штук)</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
@@ -251,8 +250,8 @@ export default function NewPropertyPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Удобства</CardTitle>
-              <CardDescription>Выберите все, что есть в вашем объекте</CardDescription>
+              <CardTitle>Дополнительно</CardTitle>
+              <CardDescription>Отметьте всё, что есть в этой сборке</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
@@ -266,7 +265,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-pool"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Бассейн
+                    NVIDIA GeForce
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -279,7 +278,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-garage"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Гараж
+                    SSD NVMe
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -292,7 +291,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-garden"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Сад
+                    Wi-Fi
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -305,7 +304,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-balcony"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Балкон
+                    Bluetooth
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -318,7 +317,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-elevator"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Лифт
+                    Жидкостное охлаждение
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -331,7 +330,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-ac"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Кондиционер
+                    RGB-подсветка
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -344,7 +343,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-furnished"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    С мебелью
+                    Windows 11
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -357,7 +356,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-pet"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Можно с питомцами
+                    Гарантия 24 мес.
                   </label>
                 </div>
               </div>
@@ -369,7 +368,7 @@ export default function NewPropertyPage() {
           <Link to="/properties">
             <Button variant="outline">Отмена</Button>
           </Link>
-          <Button type="submit">Опубликовать</Button>
+          <Button type="submit">Добавить товар</Button>
         </div>
       </form>
     </div>

@@ -8,11 +8,11 @@ import { Label } from "@/components/ui/label"
 import { Filter, X } from "lucide-react"
 
 export function SearchFilters() {
-  const [priceRange, setPriceRange] = useState([5000000, 50000000])
-  const [bedroomsRange, setBedroomsRange] = useState([1, 5])
-  const [bathroomsRange, setBathroomsRange] = useState([1, 4])
-  const [squareFootageRange, setSquareFootageRange] = useState([30, 300])
-  const [yearBuiltRange, setYearBuiltRange] = useState([1990, 2024])
+  const [priceRange, setPriceRange] = useState([30000, 250000])
+  const [bedroomsRange, setBedroomsRange] = useState([8, 64])
+  const [bathroomsRange, setBathroomsRange] = useState([256, 2000])
+  const [squareFootageRange, setSquareFootageRange] = useState([1080, 4090])
+  const [yearBuiltRange, setYearBuiltRange] = useState([2020, 2024])
   const [propertyTypes, setPropertyTypes] = useState({
     house: false,
     apartment: false,
@@ -45,11 +45,11 @@ export function SearchFilters() {
   }
 
   const handleReset = () => {
-    setPriceRange([5000000, 50000000])
-    setBedroomsRange([1, 5])
-    setBathroomsRange([1, 4])
-    setSquareFootageRange([30, 300])
-    setYearBuiltRange([1990, 2024])
+    setPriceRange([30000, 250000])
+    setBedroomsRange([8, 64])
+    setBathroomsRange([256, 2000])
+    setSquareFootageRange([1080, 4090])
+    setYearBuiltRange([2020, 2024])
     setPropertyTypes({
       house: false,
       apartment: false,
@@ -92,7 +92,7 @@ export function SearchFilters() {
           <AccordionTrigger>Диапазон цен</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4">
-              <Slider value={priceRange} min={0} max={200000000} step={1000000} onValueChange={setPriceRange} />
+              <Slider value={priceRange} min={20000} max={500000} step={5000} onValueChange={setPriceRange} />
               <div className="flex items-center justify-between">
                 <div className="w-[120px]">
                   <Label htmlFor="price-min">Мин. цена</Label>
@@ -108,17 +108,17 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="bedrooms">
-          <AccordionTrigger>Комнат</AccordionTrigger>
+          <AccordionTrigger>Оперативная память (ГБ)</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4">
-              <Slider value={bedroomsRange} min={0} max={10} step={1} onValueChange={setBedroomsRange} />
+              <Slider value={bedroomsRange} min={4} max={128} step={4} onValueChange={setBedroomsRange} />
               <div className="flex items-center justify-between">
                 <div className="w-[120px]">
-                  <Label htmlFor="bedrooms-min">Мин. комнат</Label>
+                  <Label htmlFor="bedrooms-min">От, ГБ</Label>
                   <Input id="bedrooms-min" type="number" value={bedroomsRange[0]} readOnly />
                 </div>
                 <div className="w-[120px]">
-                  <Label htmlFor="bedrooms-max">Макс. комнат</Label>
+                  <Label htmlFor="bedrooms-max">До, ГБ</Label>
                   <Input id="bedrooms-max" type="number" value={bedroomsRange[1]} readOnly />
                 </div>
               </div>
@@ -127,17 +127,17 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="bathrooms">
-          <AccordionTrigger>Санузлов</AccordionTrigger>
+          <AccordionTrigger>Накопитель (ГБ)</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4">
-              <Slider value={bathroomsRange} min={0} max={10} step={1} onValueChange={setBathroomsRange} />
+              <Slider value={bathroomsRange} min={128} max={4000} step={128} onValueChange={setBathroomsRange} />
               <div className="flex items-center justify-between">
                 <div className="w-[120px]">
-                  <Label htmlFor="bathrooms-min">Мин.</Label>
+                  <Label htmlFor="bathrooms-min">От, ГБ</Label>
                   <Input id="bathrooms-min" type="number" value={bathroomsRange[0]} readOnly />
                 </div>
                 <div className="w-[120px]">
-                  <Label htmlFor="bathrooms-max">Макс.</Label>
+                  <Label htmlFor="bathrooms-max">До, ГБ</Label>
                   <Input id="bathrooms-max" type="number" value={bathroomsRange[1]} readOnly />
                 </div>
               </div>
@@ -146,17 +146,17 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="squareFootage">
-          <AccordionTrigger>Площадь (м2)</AccordionTrigger>
+          <AccordionTrigger>Видеокарта (серия RTX)</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4">
-              <Slider value={squareFootageRange} min={0} max={500} step={10} onValueChange={setSquareFootageRange} />
+              <Slider value={squareFootageRange} min={1050} max={4090} step={10} onValueChange={setSquareFootageRange} />
               <div className="flex items-center justify-between">
                 <div className="w-[120px]">
-                  <Label htmlFor="sqft-min">Мин. м2</Label>
+                  <Label htmlFor="sqft-min">От</Label>
                   <Input id="sqft-min" type="number" value={squareFootageRange[0]} readOnly />
                 </div>
                 <div className="w-[120px]">
-                  <Label htmlFor="sqft-max">Макс. м2</Label>
+                  <Label htmlFor="sqft-max">До</Label>
                   <Input id="sqft-max" type="number" value={squareFootageRange[1]} readOnly />
                 </div>
               </div>
@@ -165,10 +165,10 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="yearBuilt">
-          <AccordionTrigger>Год постройки</AccordionTrigger>
+          <AccordionTrigger>Год выпуска</AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4">
-              <Slider value={yearBuiltRange} min={1950} max={2024} step={1} onValueChange={setYearBuiltRange} />
+              <Slider value={yearBuiltRange} min={2018} max={2024} step={1} onValueChange={setYearBuiltRange} />
               <div className="flex items-center justify-between">
                 <div className="w-[120px]">
                   <Label htmlFor="year-min">От года</Label>
@@ -184,7 +184,7 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="propertyType">
-          <AccordionTrigger>Тип недвижимости</AccordionTrigger>
+          <AccordionTrigger>Тип устройства</AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
@@ -197,7 +197,7 @@ export function SearchFilters() {
                   htmlFor="type-house"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Дом
+                  Игровой ПК
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -210,7 +210,7 @@ export function SearchFilters() {
                   htmlFor="type-apartment"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Квартира
+                  Офисный ПК
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -223,7 +223,7 @@ export function SearchFilters() {
                   htmlFor="type-condo"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Апартаменты
+                  Ноутбук
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -236,7 +236,7 @@ export function SearchFilters() {
                   htmlFor="type-townhouse"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Таунхаус
+                  Рабочая станция
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -249,7 +249,7 @@ export function SearchFilters() {
                   htmlFor="type-land"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Участок
+                  Моноблок
                 </label>
               </div>
             </div>
@@ -257,7 +257,7 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="amenities">
-          <AccordionTrigger>Удобства</AccordionTrigger>
+          <AccordionTrigger>Бренды и опции</AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
@@ -270,7 +270,7 @@ export function SearchFilters() {
                   htmlFor="amenity-pool"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Бассейн
+                  Intel
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -283,7 +283,7 @@ export function SearchFilters() {
                   htmlFor="amenity-garage"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Гараж
+                  AMD
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -296,7 +296,7 @@ export function SearchFilters() {
                   htmlFor="amenity-garden"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Сад
+                  NVIDIA GeForce
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -309,7 +309,7 @@ export function SearchFilters() {
                   htmlFor="amenity-balcony"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Балкон
+                  SSD NVMe
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -322,7 +322,7 @@ export function SearchFilters() {
                   htmlFor="amenity-elevator"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Лифт
+                  Wi-Fi
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -335,7 +335,7 @@ export function SearchFilters() {
                   htmlFor="amenity-ac"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Кондиционер
+                  Жидкостное охлаждение
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -348,7 +348,7 @@ export function SearchFilters() {
                   htmlFor="amenity-furnished"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  С мебелью
+                  Windows 11
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -361,7 +361,7 @@ export function SearchFilters() {
                   htmlFor="amenity-pet"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Можно с питомцами
+                  RGB-подсветка
                 </label>
               </div>
             </div>
@@ -369,7 +369,7 @@ export function SearchFilters() {
         </AccordionItem>
 
         <AccordionItem value="status">
-          <AccordionTrigger>Статус</AccordionTrigger>
+          <AccordionTrigger>Наличие</AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
@@ -382,7 +382,7 @@ export function SearchFilters() {
                   htmlFor="status-available"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Доступно
+                  В наличии
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -395,7 +395,7 @@ export function SearchFilters() {
                   htmlFor="status-pending"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Бронь
+                  Под заказ
                 </label>
               </div>
               <div className="flex items-center space-x-2">
@@ -408,7 +408,7 @@ export function SearchFilters() {
                   htmlFor="status-sold"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Продано
+                  Нет в наличии
                 </label>
               </div>
             </div>

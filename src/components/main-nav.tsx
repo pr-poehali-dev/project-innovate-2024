@@ -10,7 +10,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from "@/lib/utils"
-import { Home, Building, Search, Menu, X } from "lucide-react"
+import { Home, Cpu, Search, Menu, X } from "lucide-react"
 import { useState } from "react"
 
 export function MainNav() {
@@ -27,8 +27,8 @@ export function MainNav() {
     },
     {
       href: "/properties",
-      label: "Объекты",
-      icon: Building,
+      label: "Каталог",
+      icon: Cpu,
       active: pathname === "/properties" || pathname.startsWith("/properties/"),
     },
     {
@@ -60,7 +60,7 @@ export function MainNav() {
               </NavigationMenuItem>
             ))}
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Полезное</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Помощь</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
                   <li className="row-span-3">
@@ -69,9 +69,9 @@ export function MainNav() {
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
-                        <div className="mb-2 mt-4 text-lg font-medium">Гид по недвижимости</div>
+                        <div className="mb-2 mt-4 text-lg font-medium">Гид по выбору ПК</div>
                         <p className="text-sm leading-tight text-muted-foreground">
-                          Всё, что нужно знать о покупке и продаже недвижимости
+                          Всё, что нужно знать перед покупкой компьютера
                         </p>
                       </a>
                     </NavigationMenuLink>
@@ -79,7 +79,7 @@ export function MainNav() {
                   <li>
                     <Link to="/guides/buying">
                       <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Гид покупателя</div>
+                        <div className="text-sm font-medium leading-none">Как выбрать ПК</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Советы для тех, кто покупает впервые
                         </p>
@@ -89,9 +89,9 @@ export function MainNav() {
                   <li>
                     <Link to="/guides/selling">
                       <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Гид продавца</div>
+                        <div className="text-sm font-medium leading-none">Доставка и оплата</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Как получить лучшую цену за вашу недвижимость
+                          Условия доставки и способы оплаты заказа
                         </p>
                       </NavigationMenuLink>
                     </Link>
@@ -99,9 +99,9 @@ export function MainNav() {
                   <li>
                     <Link to="/mortgage-calculator">
                       <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Ипотечный калькулятор</div>
+                        <div className="text-sm font-medium leading-none">Гарантия и сервис</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Рассчитайте ежемесячные платежи
+                          Поддержка и обслуживание вашей техники
                         </p>
                       </NavigationMenuLink>
                     </Link>
@@ -142,21 +142,21 @@ export function MainNav() {
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-lg hover:bg-accent hover:text-accent-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Гид покупателя
+              Как выбрать ПК
             </Link>
             <Link
               to="/guides/selling"
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-lg hover:bg-accent hover:text-accent-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Гид продавца
+              Доставка и оплата
             </Link>
             <Link
               to="/mortgage-calculator"
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-lg hover:bg-accent hover:text-accent-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Ипотечный калькулятор
+              Гарантия и сервис
             </Link>
           </nav>
         </div>
